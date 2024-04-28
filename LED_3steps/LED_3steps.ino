@@ -23,6 +23,24 @@ void led_off(void)
 
 void led_blink(void)
 {
+while(1){
+
+//ボタンの状態を取得
+    buttonState = digitalRead(buttonPin);
+    if(buttonState == HIGH){
+      //ボタンが押されたら点滅中断して消灯
+      led_off();
+      isBlinking = false;
+      return;
+    }
+    digitalWrite(ledPin_Red, HIGH);
+    delay(500);
+    digitalWrite(ledPin_Red, LOW);
+    delay(500);
+  }
+  return;
+
+  #if 0
   for(int i = 0; i < 10; i++){
 
       //ボタンの状態を取得
@@ -39,6 +57,8 @@ void led_blink(void)
     delay(500);
   }
   return;
+  #endif
+
 }
 
 void setup() {
